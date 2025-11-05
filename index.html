@@ -14,8 +14,13 @@
             padding: 0;
             line-height: 1.6;
         }
+        :root{
+            --primary:#334155; --primary-dark:#1f2937; --accent:#22c55e;
+            --bg:#f6f7f9; --text:#0f172a; --surface:#ffffff; --surface-text:#0f172a;
+            --footer:#0f172a; --footer-text:#ffffff;
+        }
         header {
-            background-color: #ff7a59;
+            background-color: var(--primary);
             color: #fff;
             padding: 10px 20px;
             display: flex;
@@ -30,11 +35,11 @@
         .header-right {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 16px;
         }
         .nav-buttons {
             display: flex;
-            gap: 10px;
+            gap: 36px;
         }
         .menu-toggle {
             display: none;
@@ -67,21 +72,14 @@
             padding: 8px 12px;
             display: block;
         }
-        .nav-buttons a {
-            color: #fff;
-            text-decoration: none;
-            padding: 8px 12px;
-            border-radius: 5px;
-        }
-        .nav-buttons a:hover {
-            background-color: #e8684c;
-        }
+        .nav-buttons a { color:#fff; text-decoration:none; padding:0; border-radius:0; }
+        .nav-buttons a:hover { background:transparent; text-decoration: underline; }
         .language-switcher {
-            background-color: #ff7a59;
+            background: transparent;
             color: #fff;
-            border: none;
+            border: 0;
             padding: 8px 12px;
-            border-radius: 5px;
+            border-radius: 0;
         }
          section {
             padding: 10px 10px;
@@ -167,8 +165,8 @@
             margin: 0;
         }
         footer {
-            background-color: #333;
-            color: #fff;
+            background-color: var(--footer);
+            color: var(--footer-text);
             padding: 20px;
             display: flex;
             justify-content: space-between;
@@ -177,16 +175,14 @@
         }
         footer .button {
             display: inline-block;
-            background-color: #333; /* match footer background */
+            background-color: transparent; /* match footer background */
             color: #fff;
             padding: 10px 20px;
             border-radius: 5px;
             text-decoration: none;
             margin: 0 5px;
         }
-        footer .button:hover {
-            background-color: #555;
-        }
+        footer .button:hover { background-color: #555; }
         #faq {
             text-align: center;   /* 讓所有文字置中 */
             margin: 0 auto;       /* 置中區塊本身 */
@@ -247,6 +243,8 @@
             }
             .menu-toggle {
                 display: block;
+                background: transparent;
+                border: 0;
             }
             .description {
                 flex-direction: column;
@@ -310,8 +308,6 @@
         </div>
         <div class="carousel" id="hero-carousel" aria-label="App screenshots">
             <div class="carousel-track"></div>
-            <button class="carousel-btn prev" aria-label="Previous">‹</button>
-            <button class="carousel-btn next" aria-label="Next">›</button>
             <div class="carousel-dots"></div>
         </div>
     </section>
@@ -449,9 +445,9 @@
             }
             function next(){ go(idx + 1); }
             function prev(){ go(idx - 1); }
-            // Controls: right button moves to next (dot moves right), left button moves to previous (dot moves left)
-            nextBtn.addEventListener('click', next);
-            prevBtn.addEventListener('click', prev);
+            // Controls (arrows optional): bind only if present
+            if (nextBtn) nextBtn.addEventListener('click', next);
+            if (prevBtn) prevBtn.addEventListener('click', prev);
             function start(){ if(slides.length < 2) return; stop(); timer = setInterval(next, 3500); }
             function stop(){ if(timer){ clearInterval(timer); timer = null; } }
             container.addEventListener('mouseenter', stop);
@@ -485,8 +481,8 @@
                 container.addEventListener('pointerleave', function(e){ if(pStartX!=null){ pStartX=null; start(); } });
             }
             if(slides.length < 2){
-                prevBtn.style.display = 'none';
-                nextBtn.style.display = 'none';
+                if (prevBtn) prevBtn.style.display = 'none';
+                if (nextBtn) nextBtn.style.display = 'none';
                 dotsWrap.style.display = 'none';
             } else {
                 start();

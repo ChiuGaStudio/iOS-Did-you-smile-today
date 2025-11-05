@@ -5,10 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DAILY的笑 - 支援</title>
     <style>
+        :root{
+            --primary:#334155; --primary-dark:#1f2937; --accent:#22c55e;
+            --bg:#f6f7f9; --text:#0f172a; --surface:#ffffff; --surface-text:#0f172a;
+            --footer:#0f172a; --footer-text:#ffffff;
+        }
         body {
             font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
+            background-color: var(--bg);
+            color: var(--text);
             margin: 0;
             padding: 0;
             line-height: 1.6;
@@ -16,118 +21,79 @@
             flex-direction: column;
             min-height: 100vh;
         }
-        .container {
-            max-width: 800px;
-            margin: 50px auto 0;
-            padding: 20px;
-            background: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-        h1 {
-            color: #333;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        p {
-            color: #555;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-        h2 {
-            color: #444;
-            font-size: 1.5rem;
-            margin-top: 20px;
-            border-bottom: 2px solid #ff7a59;
-            padding-bottom: 5px;
-        }
-        a {
-            color: #ff7a59;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-top: auto;
-        }
-        footer .button {
-            display: inline-block;
-            background-color: #333; /* match footer background */
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            margin: 0 5px;
-        }
-        footer .button:hover {
-            background-color: #555;
-        }
-        .text-right {
-            text-align: right;
-        }
         header {
-            background-color: #ff7a59;
+            background-color: var(--primary);
             color: #fff;
             padding: 10px 20px;
             display: flex;
             align-items: center;
-            justify-content: flex-end;
-            gap: 10px;
+            justify-content: space-between;
+            position: relative;
         }
-        header h1 {
-            margin: 0;
-            font-size: 2rem;
-        }
-        header .home-button {
-            background-color: #ff7a59; /* match header color */
-            color: #fff;
-            padding: 8px 12px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-        header .home-button:hover {
-            background-color: #e8684c;
-        }
-         .language-switcher {
-            background-color: #ff7a59;
-            color: #fff;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 5px;
-        }
-
-        /* Mobile adjustments */
-        @media (max-width: 600px) {
-            .container {
-                margin: 20px auto 0;
-                width: 90%;
-            }
-            footer {
-                flex-direction: column;
-                text-align: center;
-            }
+        #home .brand, header .brand { display:flex; align-items:center; }
+        header .logo { width: 40px; height: auto; margin-right: 6px; }
+        header h1 { margin: 0; font-size: 1.2rem; color:#fff; }
+        .header-right { display:flex; align-items:center; gap:16px; }
+        .nav-buttons { display:flex; gap:36px; }
+        .nav-buttons a { color:#fff; text-decoration:none; padding:0; border-radius:0; }
+        .nav-buttons a:hover { background:transparent; text-decoration: underline; }
+        .menu-toggle { display:none; background:transparent; border:0; color:#fff; font-size:1.5rem; cursor:pointer; }
+        #mobile-menu { display:none; position:absolute; right:20px; top:100%; background:var(--primary); list-style:none; margin:0; padding:10px; border-radius:8px; }
+        #mobile-menu.show { display:block; }
+        #mobile-menu li { margin:5px 0; }
+        #mobile-menu a { color:#fff; text-decoration:none; padding:8px 12px; display:block; }
+        .language-switcher { background: transparent; color:#fff; border:0; padding:8px 12px; border-radius:0; }
+        .container { max-width: 800px; margin: 30px auto 0; padding: 20px; background: var(--surface); box-shadow: 0 4px 8px rgba(0,0,0,0.08); border-radius: 8px; }
+        h1 { color: var(--surface-text); font-size: 2rem; margin-bottom: 10px; text-align: center; }
+        h2 { color: var(--surface-text); font-size: 1.25rem; margin-top: 20px; border-bottom: 2px solid var(--primary); padding-bottom: 5px; }
+        p, li { color: #555; font-size: 1rem; }
+        a { color: var(--primary); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .text-right { text-align: right; }
+        footer { background-color: var(--footer); color: var(--footer-text); padding: 20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; margin-top:auto; }
+        footer .button { display:inline-block; background-color: transparent; color:#fff; padding:10px 20px; border-radius:5px; text-decoration:none; margin:0 5px; }
+        footer .button:hover { background-color: #555; }
+        @media (max-width: 600px){
+            .menu-toggle { display:block; }
+            .nav-buttons, #language-switcher { display:none; }
+            .container { margin: 20px auto 0; width: 90%; }
+            footer { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <a class="home-button" href="../index.html" data-i18n="home_button">首頁</a>
-        <select id="language-switcher" class="language-switcher">
-            <option value="zh-Hant">繁體中文</option>
-            <option value="en">English</option>
-            <option value="ja">日本語</option>
-            <option value="ko">한국어</option>
-        </select>
+    <header id="home">
+        <div class="brand">
+            <img src="../images/logo/app_logo.png" alt="App logo" class="logo" onerror="this.style.display='none'">
+            <h1 data-i18n="app_title">DAILY的笑</h1>
+        </div>
+        <div class="header-right">
+            <button id="menu-toggle" class="menu-toggle">☰</button>
+            <nav class="nav-buttons">
+                <a href="../index.html#home" data-i18n="nav_home">首頁</a>
+                <a href="../index.html#features" data-i18n="nav_features">功能說明</a>
+                <a href="../index.html#faq" data-i18n="nav_faq">問與答</a>
+            </nav>
+            <select id="language-switcher" class="language-switcher">
+                <option value="zh-Hant">繁體中文</option>
+                <option value="en">English</option>
+                <option value="ja">日本語</option>
+                <option value="ko">한국어</option>
+            </select>
+            <ul id="mobile-menu">
+                <li><a href="../index.html#home" data-i18n="nav_home">首頁</a></li>
+                <li><a href="../index.html#features" data-i18n="nav_features">功能說明</a></li>
+                <li><a href="../index.html#faq" data-i18n="nav_faq">問與答</a></li>
+                <li>
+                    <select id="language-switcher-mobile" class="language-switcher">
+                        <option value="zh-Hant">繁體中文</option>
+                        <option value="en">English</option>
+                        <option value="ja">日本語</option>
+                        <option value="ko">한국어</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
     </header>
     <div class="container">
         <h1 data-i18n="support_title">支援頁面</h1>
@@ -161,8 +127,28 @@
     </footer>
     <script src="../js/theme.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            var menuToggle = document.getElementById('menu-toggle');
+            var mobileMenu = document.getElementById('mobile-menu');
+            if(menuToggle){
+                menuToggle.addEventListener('click', function(){
+                    mobileMenu.classList.toggle('show');
+                });
+            }
+            if(mobileMenu){
+                Array.from(mobileMenu.querySelectorAll('a')).forEach(function(a){
+                    a.addEventListener('click', function(){ mobileMenu.classList.remove('show'); });
+                });
+            }
+        });
+    </script>
+    <script>
         const pageTranslations = {
             "zh-Hant": {
+                nav_home: "首頁",
+                nav_features: "功能說明",
+                nav_faq: "問與答",
+                app_title: "DAILY的笑",
                 home_button: "首頁",
                 support_button: "支援",
                 privacy_policy_button: "隱私權政策",
@@ -183,6 +169,10 @@
                 footer_text: "© 2025 DAILY的笑. 版權所有 | 用心設計，來自台灣"
             },
             en: {
+                nav_home: "Home",
+                nav_features: "Features",
+                nav_faq: "FAQ",
+                app_title: "Did You Smile Today",
                 home_button: "Home",
                 support_button: "Support",
                 privacy_policy_button: "Privacy Policy",
@@ -203,6 +193,10 @@
                 footer_text: "© 2025 Did You Smile Today. All rights reserved | Designed with care in Taiwan"
             },
             ja: {
+                nav_home: "ホーム",
+                nav_features: "機能説明",
+                nav_faq: "よくある質問",
+                app_title: "DAILYの笑",
                 home_button: "ホーム",
                 support_button: "サポート",
                 privacy_policy_button: "プライバシーポリシー",
@@ -223,6 +217,10 @@
                 footer_text: "© 2025 DAILYの笑。全著作権所有 | 台湾で丁寧にデザイン"
             },
             ko: {
+                nav_home: "홈",
+                nav_features: "기능 설명",
+                nav_faq: "자주 묻는 질문",
+                app_title: "오늘 미소 지었나요",
                 home_button: "홈",
                 support_button: "지원",
                 privacy_policy_button: "개인정보 처리방침",

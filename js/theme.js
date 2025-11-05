@@ -54,8 +54,12 @@
     if(document.getElementById('theme-overrides')) return;
     var css = ''+
       'body{background-color:var(--bg) !important;color:var(--text) !important;}'+
-      'header,.language-switcher{background-color:var(--primary) !important;color:#fff !important;}'+
-      '.nav-buttons a:hover, header .home-button:hover{background-color:var(--primary-dark) !important;}'+
+      'header{background-color:var(--primary) !important;color:#fff !important;}'+
+      /* Header controls: text-only style */
+      '.nav-buttons a{background:transparent !important;border:0 !important;color:#fff !important;padding:0 !important;border-radius:0 !important;text-decoration:none !important;}'+
+      '.nav-buttons a:hover{background:transparent !important;text-decoration:underline !important;}'+
+      '.menu-toggle{background:transparent !important;border:0 !important;}'+
+      '.language-switcher{background:transparent !important;border:0 !important;color:#fff !important;}'+
       '.card{background:var(--surface) !important;color:var(--surface-text) !important;}'+
       'footer{background-color:var(--footer) !important;color:var(--footer-text) !important;}'+
       'a{color:var(--primary) !important;}'+
@@ -69,7 +73,7 @@
 
   function applyTheme(name){
     var key = (name||'').toLowerCase();
-    if(!THEMES[key]) key = 'sunrise';
+    if(!THEMES[key]) key = 'slate';
     setVars(THEMES[key]);
     injectOverrides();
     try{ localStorage.setItem('theme', key); }catch(e){}
@@ -93,4 +97,3 @@
     init();
   }
 })();
-
