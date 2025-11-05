@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAILY的笑 - Did You Smile Today</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #ff7a59;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        #mobile-menu {
+            display: none;
+            position: absolute;
+            right: 20px;
+            top: 100%;
+            background: #ff7a59;
+            list-style: none;
+            margin: 0;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        #mobile-menu.show {
+            display: block;
+        }
+        #mobile-menu li {
+            margin: 5px 0;
+        }
+        #mobile-menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 12px;
+            display: block;
+        }
+        .nav-buttons a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+        .nav-buttons a:hover {
+            background-color: #e8684c;
+        }
+        .language-switcher {
+            background-color: #ff7a59;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+         section {
+            padding: 10px 10px;
+        }
+        section p {
+            padding: 0 10px;
+        }
+        h2 {
+            padding: 0 10px;
+        } 
+        .description {
+            max-width: 900px;
+            margin: 40px auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            text-align: left;
+        }
+        .description > img { max-width: 250px; width: 100%; border-radius: 8px; margin: 10px; }
+        .carousel { position: relative; max-width: 250px; width: 100%; margin: 10px; }
+        .carousel-track {
+            position: relative;
+            overflow: hidden;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.18), 0 2px 6px rgba(0,0,0,0.12);
+        }
+        .carousel .slide { position: absolute; inset: 0; opacity: 0; transition: opacity .35s ease; }
+        .carousel .slide.active { opacity: 1; z-index: 2; }
+        .carousel img { width: 100%; height: auto; display: block; border-radius: 0; margin: 0; }
+        .carousel, .carousel-track, .carousel img { -webkit-user-drag: none; user-select: none; }
+        .carousel { cursor: grab; }
+        .carousel.dragging { cursor: grabbing; }
+        .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,.4); color: #fff; border: 0; width: 32px; height: 32px; border-radius: 16px; cursor: pointer; z-index: 3; }
+        .carousel-btn.prev { left: 6px; }
+        .carousel-btn.next { right: 6px; }
+        .carousel-dots { display: flex; justify-content: center; gap: 6px; padding: 8px 0; position: relative; z-index: 2; }
+        .carousel-dots .dot { width: 8px; height: 8px; border-radius: 50%; background: #bbb; border: 0; cursor: pointer; padding: 0; }
+        .carousel-dots .dot.active { background: #ff7a59; }
+        .description .text {
+            text-align: left;
+            flex: 1;
+            min-width: 550px;
+            margin: 10px 10px 10px 0; /* shift left a bit */
+        }
+        .description .text p {
+            margin-top: 0;
+        }
+        .features {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        .card:active {
+            transform: translateY(-2px) scale(0.98);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .card .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .card h3 {
+            margin: 10px 0 5px;
+            font-size: 1.2rem;
+        }
+        .card p {
+            margin: 0;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        footer .button {
+            display: inline-block;
+            background-color: #333; /* match footer background */
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        footer .button:hover {
+            background-color: #555;
+        }
+        #faq {
+            text-align: center;   /* 讓所有文字置中 */
+            margin: 0 auto;       /* 置中區塊本身 */
+            max-width: 800px;     /* 可選，避免內容太寬 */
+        }
+        #features {
+            text-align: center;   /* 讓所有文字置中 */
+            margin: 0 auto;       /* 置中區塊本身 */
+            max-width: 800px;     /* 可選，避免內容太寬 */
+        }
+        #home {
+            display: flex;
+            justify-content: space-between; /* 左邊品牌 + 右邊選單 */
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        #home .brand {
+            display: flex;
+            align-items: center;
+        }
+        #home .logo {
+            width: 50px;     /* 控制圖片寬度 */
+            height: auto;    /* 自動維持比例 */
+            margin-right: 2px;
+        }
+        #home h1 {
+            font-size: 1.2rem;
+            margin: 0; /* 避免預設的 margin 把標題往右推 */
+        }
+
+        .desc-title {
+            font-size: 4rem;
+        }
+
+        /* Desktop navigation */
+        @media (min-width: 768px) {
+            .nav-buttons a { padding: 8px 16px; }
+        }
+
+        /* FAQ styles */
+        #qa-list { max-width: 800px; margin: 0 auto; }
+        .qa-item { border: 1px solid #e5e5e5; border-radius: 8px; overflow: hidden; padding: 10px; }
+        .qa-item + .qa-item { margin-top: 10px; }
+
+        /* Mobile adjustments */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: row;
+                align-items: center;
+            }
+            .header-right {
+                justify-content: flex-end;
+            }
+            .nav-buttons,
+            #language-switcher {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .description {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .description .text {
+                min-width: auto;
+                margin: 0 0 10px 0;
+                text-align: center;
+            }
+            .desc-title {
+                font-size: 2.5rem;
+            }
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="home">
+        <div class="brand">
+            <img src="images/logo/app_logo.png" alt="App logo" class="logo" onerror="this.style.display='none'">
+            <h1 data-i18n="app_title">DAILY的笑</h1>
+        </div>
+        <div class="header-right">
+            <button id="menu-toggle" class="menu-toggle">☰</button>
+            <nav class="nav-buttons">
+                <a href="#home" data-i18n="nav_home">首頁</a>
+                <a href="#features" data-i18n="nav_features">功能說明</a>
+                <a href="#faq" data-i18n="nav_faq">問與答</a>
+            </nav>
+            <select id="language-switcher" class="language-switcher">
+                <option value="zh-Hant">繁體中文</option>
+                <option value="en">English</option>
+                <option value="ja">日本語</option>
+                <option value="ko">한국어</option>
+            </select>
+            <ul id="mobile-menu">
+                <li><a href="#home" data-i18n="nav_home">首頁</a></li>
+                <li><a href="#features" data-i18n="nav_features">功能說明</a></li>
+                <li><a href="#faq" data-i18n="nav_faq">問與答</a></li>
+                <li>
+                    <select id="language-switcher-mobile" class="language-switcher">
+                        <option value="zh-Hant">繁體中文</option>
+                        <option value="en">English</option>
+                        <option value="ja">日本語</option>
+                        <option value="ko">한국어</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="description">
+        <div class="text">
+            <h2 class="desc-title" data-i18n="app_title">DAILY的笑</h2>
+            <p data-i18n="desc_text">幫你每天「記得微笑」的小工具：即時偵測微笑、顯示角度與曲線；也可手動拍攝並在拍照後預覽；所有照片與紀錄僅儲存在設備中，並使用日曆回顧且設定每日提醒。</p>
+        </div>
+        <div class="carousel" id="hero-carousel" aria-label="App screenshots">
+            <div class="carousel-track"></div>
+            <button class="carousel-btn prev" aria-label="Previous">‹</button>
+            <button class="carousel-btn next" aria-label="Next">›</button>
+            <div class="carousel-dots"></div>
+        </div>
+    </section>
+
+    <h2 id="features" data-i18n="features_title">功能說明</h2>
+
+    <section class="features">
+        <div class="card">
+            <div class="icon">😊</div>
+            <h3 data-i18n="feature_detect_title">即時偵測微笑</h3>
+            <p data-i18n="feature_detect_content">使用 Vision 臉部地標偵測，顯示笑容角度與曲線指標。</p>
+        </div>
+        <div class="card">
+            <div class="icon">🎞️</div>
+            <h3 data-i18n="feature_browse_title">瀏覽功能和短影片製作</h3>
+            <p data-i18n="feature_browse_content">以時間序列的方式快速瀏覽，將圖片串接成短影片，分享你的每日笑容。</p>
+        </div>
+        <div class="card">
+            <div class="icon">🗓️</div>
+            <h3 data-i18n="feature_calendar_title">手機端儲存與日曆回顧</h3>
+            <p data-i18n="feature_calendar_content">照片與紀錄僅儲存在本機；日曆標示每天是否有紀錄，並支援每日提醒。</p>
+        </div>
+        
+    </section>
+
+    <section id="faq">
+        <h2 data-i18n="faq_title">問與答</h2>
+        <div id="qa-list">
+            <div class="qa-item">
+                <p data-i18n="faq_q1"><strong>Q: 會自動拍攝嗎？</strong></p>
+                <p data-i18n="faq_a1">A: 會。同時支援手動與自動拍攝，可在拍照頁面下方切換喜歡的模式。</p>
+            </div>
+            
+            <div class="qa-item">
+                <p data-i18n="faq_q2"><strong>Q: 需要哪些權限？</strong></p>
+                <p data-i18n="faq_a2">A: 相機存取（偵測與拍攝）、相片存取（用於儲存串接的短影片）；若開啟每日提醒，會請求通知權限。</p>
+            </div>
+            <div class="qa-item">
+                <p data-i18n="faq_q3"><strong>Q: 我的資料會被上傳到雲端嗎？</strong></p>
+                <p data-i18n="faq_a3">A: 不會。照片與紀錄僅儲存在你的裝置中，不會上傳至第三方服務。</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <span data-i18n="footer_text">© 2025 DAILY的笑. 版權所有 | 用心設計，來自台灣</span>
+        <span>
+            <a class="button" href="supports/support.html" data-i18n="support_button">支援</a>
+            <a class="button" href="PrivacyPolicies/PrivacyPolicies.html" data-i18n="privacy_policy_button">隱私權政策</a>
+        </span>
+    </footer>
+    <script src="js/theme.js"></script>
+    <script>
+        // Provide your image list here; add/remove as needed
+        window.carouselImages = window.carouselImages || [
+            'images/IMG_7627.PNG',
+            'images/IMG_7629.PNG',
+            'images/IMG_7630.PNG',
+            'images/IMG_7634.PNG'
+        ];
+    </script>
+    <script>
+        // Simple carousel initializer for #hero-carousel
+        (function(){
+            var container = document.getElementById('hero-carousel');
+            if(!container) return;
+            var sources = (window.carouselImages || []).filter(Boolean);
+            var track = container.querySelector('.carousel-track');
+            var dotsWrap = container.querySelector('.carousel-dots');
+            var prevBtn = container.querySelector('.prev');
+            var nextBtn = container.querySelector('.next');
+            var slides = [];
+            var idx = 0, timer = null;
+
+            function addSlide(src, i){
+                var slide = document.createElement('div');
+                slide.className = 'slide';
+                var img = document.createElement('img');
+                img.loading = 'lazy';
+                img.alt = 'App preview ' + (i+1);
+                img.src = src;
+                img.draggable = false;
+                img.onerror = function(){
+                    slide.remove();
+                    var dot = dotsWrap.children[i];
+                    if(dot) dot.remove();
+                    slides = Array.from(track.children);
+                    if(!slides.length) container.style.display = 'none';
+                };
+                slide.appendChild(img);
+                track.appendChild(slide);
+                var dot = document.createElement('button');
+                dot.className = 'dot';
+                dot.type = 'button';
+                dot.setAttribute('aria-label','Go to slide ' + (i+1));
+                (function(i){ dot.addEventListener('click', function(){ go(i); }); })(i);
+                dotsWrap.appendChild(dot);
+            }
+            sources.forEach(addSlide);
+            slides = Array.from(track.children);
+            if(!slides.length){ container.style.display='none'; return; }
+
+            // make first visible
+            slides[0].classList.add('active');
+            function updateHeight(){
+                var active = slides[idx];
+                if(!active) return;
+                var img = active.querySelector('img');
+                if(!img) return;
+                var h = img.offsetHeight;
+                if(h) track.style.height = h + 'px';
+            }
+            // update height when images load
+            slides.forEach(function(s){ var im = s.querySelector('img'); if(im){ im.addEventListener('load', updateHeight, {once:false}); } });
+            window.addEventListener('resize', updateHeight);
+            function renderDots(){ Array.from(dotsWrap.children).forEach(function(d, i){ d.classList.toggle('active', i === idx); }); }
+            renderDots();
+            var animating = false;
+            function go(to){
+                if(animating) return;
+                to = (to + slides.length) % slides.length;
+                if(to === idx) return;
+                animating = true;
+                var from = idx;
+                var fromSlide = slides[from];
+                var toSlide = slides[to];
+                // cross-fade
+                toSlide.classList.add('active');
+                fromSlide.classList.remove('active');
+                updateHeight();
+                var done = false;
+                var end = function(){ if(done) return; done = true; idx = to; renderDots(); animating = false; };
+                toSlide.addEventListener('transitionend', end, {once:true});
+                setTimeout(end, 400); // fallback
+            }
+            function next(){ go(idx + 1); }
+            function prev(){ go(idx - 1); }
+            // Controls: right button moves to next (dot moves right), left button moves to previous (dot moves left)
+            nextBtn.addEventListener('click', next);
+            prevBtn.addEventListener('click', prev);
+            function start(){ if(slides.length < 2) return; stop(); timer = setInterval(next, 3500); }
+            function stop(){ if(timer){ clearInterval(timer); timer = null; } }
+            container.addEventListener('mouseenter', stop);
+            container.addEventListener('mouseleave', start);
+            // Basic touch swipe
+            var startX = null;
+            var swipeEl = track;
+            swipeEl.addEventListener('dragstart', function(e){ e.preventDefault(); });
+            var SWIPE_T = 20;
+            container.addEventListener('touchstart', function(e){ if(e.changedTouches && e.changedTouches[0]){ startX = e.changedTouches[0].clientX; stop(); } }, {passive:true});
+            container.addEventListener('touchend', function(e){ if(startX==null) return; var x = e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientX : startX; var dx = x - startX; if(Math.abs(dx) > SWIPE_T){ if(dx < 0) prev(); else next(); } startX = null; start(); }, {passive:true});
+            // Mouse/pen swipe (desktop)
+            if(window.PointerEvent){
+                var pStartX = null;
+                swipeEl.addEventListener('pointerdown', function(e){ if(e.button!==0) return; pStartX = e.clientX; container.classList.add('dragging'); stop(); try{ swipeEl.setPointerCapture(e.pointerId); }catch(_e){} });
+                swipeEl.addEventListener('pointerup', function(e){ if(pStartX==null) return; var dx = e.clientX - pStartX; if(Math.abs(dx) > SWIPE_T){ if(dx < 0) prev(); else next(); } pStartX = null; container.classList.remove('dragging'); start(); });
+                swipeEl.addEventListener('pointercancel', function(){ pStartX = null; container.classList.remove('dragging'); start(); });
+                swipeEl.addEventListener('pointerleave', function(){ pStartX = null; container.classList.remove('dragging'); });
+            } else {
+                var mStartX = null;
+                swipeEl.addEventListener('mousedown', function(e){ if(e.button!==0) return; mStartX = e.clientX; container.classList.add('dragging'); stop(); });
+                document.addEventListener('mouseup', function(e){ if(mStartX==null) return; var dx = e.clientX - mStartX; if(Math.abs(dx) > SWIPE_T){ if(dx < 0) prev(); else next(); } mStartX = null; container.classList.remove('dragging'); start(); });
+                swipeEl.addEventListener('mouseleave', function(){ mStartX = null; container.classList.remove('dragging'); start(); });
+            }
+            // Mouse/pen swipe via Pointer Events
+            if(window.PointerEvent){
+                var pStartX = null;
+                container.addEventListener('pointerdown', function(e){ pStartX = e.clientX; stop(); });
+                container.addEventListener('pointerup', function(e){ if(pStartX==null) return; var dx = e.clientX - pStartX; if(Math.abs(dx) > 30){ if(dx < 0) next(); else prev(); } pStartX = null; start(); });
+                container.addEventListener('pointercancel', function(){ pStartX = null; start(); });
+                container.addEventListener('pointerleave', function(e){ if(pStartX!=null){ pStartX=null; start(); } });
+            }
+            if(slides.length < 2){
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+                dotsWrap.style.display = 'none';
+            } else {
+                start();
+            }
+        })();
+    </script>
+    <script>
+        const pageTranslations = {
+            "zh-Hant": {
+                nav_home: "首頁",
+                nav_features: "功能說明",
+                nav_faq: "問與答",
+                support_button: "支援",
+                privacy_policy_button: "隱私權政策",
+                app_title: "DAILY的笑",
+                desc_text: "幫你每天「記得微笑」的小工具：即時偵測微笑、顯示角度與曲線；也可手動拍攝並在拍照後預覽；所有照片與紀錄僅儲存在設備中，並使用日曆回顧且設定每日提醒。",
+                features_title: "功能說明",
+                feature_detect_title: "即時偵測微笑",
+                feature_detect_content: "使用 Vision 臉部地標偵測，顯示笑容角度與曲線指標。",
+                feature_browse_title: "瀏覽功能和短影片製作",
+                feature_browse_content: "以時間序列的方式快速瀏覽，將圖片串接成短影片，分享你的每日笑容。",
+                feature_calendar_title: "手機端儲存與日曆回顧",
+                feature_calendar_content: "照片與紀錄僅儲存在本機；日曆標示每天是否有紀錄，並支援每日提醒。",
+                faq_title: "問與答",
+                faq_q1: "Q: 會自動拍攝嗎？",
+                faq_a1: "A: 會。同時支援手動與自動拍攝，可在拍照頁面下方切換喜歡的模式。",
+                faq_q2: "Q: 需要哪些權限？",
+                faq_a2: "A: 相機存取（偵測與拍攝）、相片存取（用於儲存串接的短影片）；若開啟每日提醒，會請求通知權限。",
+                faq_q3: "Q: 我的資料會被上傳到雲端嗎？",
+                faq_a3: "A: 不會。照片與紀錄僅儲存在你的裝置中，不會上傳至第三方服務。",
+                footer_text: "© 2025 DAILY的笑. 版權所有 | 用心設計，來自台灣"
+            },
+            en: {
+                nav_home: "Home",
+                nav_features: "Features",
+                nav_faq: "FAQ",
+                support_button: "Support",
+                privacy_policy_button: "Privacy Policy",
+                app_title: "Did You Smile Today",
+                desc_text: "A tiny tool to help you remember to smile every day: real-time smile detection with angle and curve indicators; also supports manual capture with a post-shot preview; everything is stored on-device, with a calendar to review and daily reminders you can set.",
+                features_title: "Features",
+                feature_detect_title: "Real-time Smile Detection",
+                feature_detect_content: "Uses Vision landmarks to show smile angle and curve indicators.",
+                feature_browse_title: "Browsing & Short Video",
+                feature_browse_content: "Browse quickly in a time series; stitch photos into a short video to share your daily smiles.",
+                feature_calendar_title: "On-device Storage & Calendar",
+                feature_calendar_content: "Photos and entries stay on device; the calendar highlights daily records and supports reminders.",
+                faq_title: "FAQ",
+                faq_q1: "Q: Does it auto-capture?",
+                faq_a1: "A: Yes. It supports both manual and automatic capture; switch modes at the bottom of the capture screen.",
+                faq_q2: "Q: What permissions are needed?",
+                faq_a2: "A: Camera (detection and capture), Photos access (to save the stitched video), and Notifications if you enable daily reminders.",
+                faq_q3: "Q: Is my data uploaded?",
+                faq_a3: "A: No. Photos and records remain on your device and aren’t uploaded.",
+                footer_text: "© 2025 Did You Smile Today. All rights reserved | Designed with care in Taiwan"
+            },
+            ja: {
+                nav_home: "ホーム",
+                nav_features: "機能説明",
+                nav_faq: "よくある質問",
+                support_button: "サポート",
+                privacy_policy_button: "プライバシーポリシー",
+                app_title: "DAILYの笑",
+                desc_text: "毎日“笑顔を忘れない”ための小さなツール。リアルタイムで笑顔を検出し、角度とカーブを表示。手動撮影と撮影後プレビューにも対応。写真と記録は端末にのみ保存され、カレンダーで振り返り・毎日のリマインダーを設定できます。",
+                features_title: "機能説明",
+                feature_detect_title: "リアルタイム笑顔検出",
+                feature_detect_content: "Vision ランドマークで角度とカーブ指標を表示。",
+                feature_browse_title: "閲覧機能とショート動画作成",
+                feature_browse_content: "時系列で素早く閲覧。写真をつないでショート動画を作成し、笑顔を共有。",
+                feature_calendar_title: "端末保存とカレンダー振り返り",
+                feature_calendar_content: "写真と記録は端末のみ。カレンダーで日々の記録を表示し、リマインダーに対応。",
+                faq_title: "よくある質問",
+                faq_q1: "Q: 自動撮影しますか？",
+                faq_a1: "A: はい。手動撮影と自動撮影の両方に対応。撮影画面下部でモードを切り替えできます。",
+                faq_q2: "Q: 必要な権限は？",
+                faq_a2: "A: カメラ（検出・撮影）、写真（連結した動画の保存）、毎日リマインダーを有効にした場合は通知。",
+                faq_q3: "Q: データはアップロードされますか？",
+                faq_a3: "A: いいえ。写真と記録は端末のみに保存されます。",
+                footer_text: "© 2025 DAILYの笑。全著作権所有 | 台湾で丁寧にデザイン"
+            },
+            ko: {
+                nav_home: "홈",
+                nav_features: "기능 설명",
+                nav_faq: "자주 묻는 질문",
+                support_button: "지원",
+                privacy_policy_button: "개인정보 처리방침",
+                app_title: "오늘 미소 지었나요",
+                desc_text: "매일 ‘미소를 기억’하게 돕는 작은 도구: 실시간 미소 감지와 각도·곡선 표시; 촬영 후 미리보기를 포함한 수동 촬영도 가능; 사진과 기록은 기기에만 저장되며, 달력으로 회고하고 일일 알림을 설정할 수 있습니다.",
+                features_title: "기능 설명",
+                feature_detect_title: "실시간 미소 감지",
+                feature_detect_content: "Vision 랜드마크로 각도와 곡선 지표를 표시합니다.",
+                feature_browse_title: "보기 기능과 쇼트 비디오 제작",
+                feature_browse_content: "시간 순서로 빠르게 살펴보고, 사진을 이어 쇼트 비디오로 만들어 일상의 미소를 공유합니다.",
+                feature_calendar_title: "기기 저장과 달력 회고",
+                feature_calendar_content: "사진과 기록은 기기에만 저장. 달력이 일별 기록을 표시하고 알림을 지원합니다.",
+                faq_title: "자주 묻는 질문",
+                faq_q1: "Q: 자동으로 촬영하나요?",
+                faq_a1: "A: 네. 수동·자동 촬영을 모두 지원합니다. 촬영 화면 하단에서 원하는 모드로 전환할 수 있습니다.",
+                faq_q2: "Q: 필요한 권한은?",
+                faq_a2: "A: 카메라(감지 및 촬영), 사진/미디어(이어 붙인 영상 저장), 알림은 일일 알림을 켜면 필요합니다.",
+                faq_q3: "Q: 데이터가 업로드되나요?",
+                faq_a3: "A: 아니요. 사진과 기록은 기기에만 저장됩니다.",
+                footer_text: "© 2025 오늘 미소 지었나요. 모든 권리 보유 | 대만에서 정성껏 디자인"
+            }
+        };
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            var menuToggle = document.getElementById('menu-toggle');
+            var mobileMenu = document.getElementById('mobile-menu');
+
+            if(menuToggle){
+                menuToggle.addEventListener('click', function(){
+                    mobileMenu.classList.toggle('show');
+                });
+            }
+            mobileMenu.querySelectorAll('a').forEach(function(a){
+                a.addEventListener('click', function(){
+                    mobileMenu.classList.remove('show');
+                });
+            });
+        });
+    </script>
+    <script src="js/language-switcher.js"></script>
+</body>
+</html>
