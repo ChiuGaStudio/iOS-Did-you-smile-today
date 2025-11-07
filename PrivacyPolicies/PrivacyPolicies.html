@@ -79,7 +79,7 @@
     </header>
     <div class="container">
         <h1 data-i18n="privacy_title">隱私權政策</h1>
-        <p class="text-sm text-right mb-4">最近更新日期：2025/11/05</p>
+        <p class="text-sm text-right mb-4">最近更新日期：2025/11/07</p>
         <p data-i18n="privacy_intro">我們十分重視您的隱私。本政策說明在您使用 <strong>DAILY的笑</strong> 時，我們如何收集、使用與保護您的個人資訊。</p>
 
         <h2 data-i18n="section1_title">1. 收集的資訊</h2>
@@ -101,6 +101,27 @@
             <li data-i18n="section3_item3"><strong>相片存取：</strong> 用於儲存與讀取由照片串接成的短影片與相關照片檔。</li>
             <li data-i18n="section3_item2"><strong>通知權限（可選）：</strong> 若開啟每日提醒，將請求通知權限。</li>
         </ul>
+
+        <h2 id="truedepth" data-i18n="truedepth_title">TrueDepth 與臉部資料</h2>
+        <p data-i18n="truedepth_text">本 App 使用 Apple 的 TrueDepth API 以即時讀取臉部表情係數與臉部姿態，僅為判斷使用者是否微笑之目的。App 不會收集、儲存、或傳輸任何 TrueDepth 生成的深度資料或可識別的臉部幾何資料；TrueDepth 產生的表情係數僅於裝置端即時處理，處理完成後即刻丟棄。您主動拍攝的照片屬於一般影像資料，僅儲存在本機，不會上傳。</p>
+
+        <h2 id="face-purpose" data-i18n="face_purpose_title">資料的使用目的</h2>
+        <p data-i18n="face_purpose_text">我們僅將 TrueDepth 所得之即時表情係數用於啟用與改善 App 內的微笑偵測功能與介面互動，不用於身分識別、不建立個人檔案、不用於行銷或廣告，也不作跨服務追蹤。</p>
+
+        <h2 id="face-sharing" data-i18n="face_share_title">資料的分享與揭露</h2>
+        <p data-i18n="face_share_text">與 TrueDepth 臉部資料相關的處理完全在裝置端進行，不會分享或揭露給任何第三方。App 不使用會存取臉部資料的第三方 SDK。</p>
+
+        <h2 id="face-storage" data-i18n="face_store_title">資料的儲存與保留</h2>
+        <p data-i18n="face_store_text">本 App 不會將 TrueDepth 臉部資料儲存於伺服器或雲端；亦不在本機長期保存。若 App 內顯示使用統計（如微笑次數或成就），該等資料為非生物特徵的數值資料，與臉部資料無關，並僅以本機方式儲存。</p>
+
+        <h2 id="face-rights" data-i18n="face_rights_title">使用者權利與控制</h2>
+        <ul>
+            <li data-i18n="face_rights_item1">您可隨時在系統層級拒絕或撤回相機權限；在相機權限關閉時，App 不會存取 TrueDepth 或相機資料。</li>
+            <li data-i18n="face_rights_item2">若您刪除本 App，所有儲存在本機的非生物特徵資料（如使用統計）將一併移除。</li>
+        </ul>
+
+        <h2 id="compliance" data-i18n="compliance_title">聲明與合規</h2>
+        <p data-i18n="compliance_text">本 App 遵循 Apple 的 TrueDepth/ARKit 使用規範與 App Store 審核指南。App 不會將臉部資料用於未經同意之用途、身分識別、監控或廣告。</p>
 
         <h2 data-i18n="section4_title">4. 安全</h2>
         <p data-i18n="section4_text">我們確保您的資料安全地儲存在本機，除非您自行分享，否則他人無法存取。</p>
@@ -166,6 +187,19 @@
                 section3_item1: "<strong>相機存取：</strong> 用於偵測微笑與拍攝照片。",
                 section3_item3: "<strong>相片存取：</strong> 用於儲存與讀取由照片串接成的短影片與相關照片檔。",
                 section3_item2: "<strong>通知權限（可選）：</strong> 若開啟每日提醒，將請求通知權限。",
+                truedepth_title: "TrueDepth 與臉部資料",
+                truedepth_text: "本 App 使用 Apple 的 TrueDepth API 以即時讀取臉部表情係數與臉部姿態，僅為判斷使用者是否微笑之目的。App 不會收集、儲存、或傳輸任何 TrueDepth 生成的深度資料或可識別的臉部幾何資料；TrueDepth 產生的表情係數僅於裝置端即時處理，處理完成後即刻丟棄。您主動拍攝的照片屬於一般影像資料，僅儲存在本機，不會上傳。",
+                face_purpose_title: "資料的使用目的",
+                face_purpose_text: "我們僅將 TrueDepth 所得之即時表情係數用於啟用與改善 App 內的微笑偵測功能與介面互動，不用於身分識別、不建立個人檔案、不用於行銷或廣告，也不作跨服務追蹤。",
+                face_share_title: "資料的分享與揭露",
+                face_share_text: "與 TrueDepth 臉部資料相關的處理完全在裝置端進行，不會分享或揭露給任何第三方。App 不使用會存取臉部資料的第三方 SDK。",
+                face_store_title: "資料的儲存與保留",
+                face_store_text: "本 App 不會將 TrueDepth 臉部資料儲存於伺服器或雲端；亦不在本機長期保存。若 App 內顯示使用統計（如微笑次數或成就），該等資料為非生物特徵的數值資料，與臉部資料無關，並僅以本機方式儲存。",
+                face_rights_title: "使用者權利與控制",
+                face_rights_item1: "您可隨時在系統層級拒絕或撤回相機權限；在相機權限關閉時，App 不會存取 TrueDepth 或相機資料。",
+                face_rights_item2: "若您刪除本 App，所有儲存在本機的非生物特徵資料（如使用統計）將一併移除。",
+                compliance_title: "聲明與合規",
+                compliance_text: "本 App 遵循 Apple 的 TrueDepth/ARKit 使用規範與 App Store 審核指南。App 不會將臉部資料用於未經同意之用途、身分識別、監控或廣告。",
                 section4_title: "4. 安全",
                 section4_text: "我們確保您的資料安全地儲存在本機，除非您自行分享，否則他人無法存取。",
                 section5_title: "5. 您的權利",
@@ -200,6 +234,19 @@
                 section3_item1: "<strong>Camera:</strong> used for smile detection and capturing photos.",
                 section3_item3: "<strong>Photos access:</strong> used to save and read the stitched short video and related photos.",
                 section3_item2: "<strong>Notifications (optional):</strong> requested if you enable daily reminders.",
+                truedepth_title: "TrueDepth and Face Data",
+                truedepth_text: "This app uses Apple’s TrueDepth API to read facial expression coefficients and face pose in real time solely to determine whether the user is smiling. The app does not collect, store, or transmit any TrueDepth depth data or identifiable face geometry. TrueDepth-derived coefficients are processed on-device in real time and are not persisted after use. Photos you choose to capture are regular image content stored locally on your device and are never uploaded.",
+                face_purpose_title: "Purposes of Use",
+                face_purpose_text: "TrueDepth-derived real-time expression coefficients are used only to enable and improve smile detection and in-app interactions. They are not used for identification, profiling, marketing/advertising, or cross-service tracking.",
+                face_share_title: "Sharing and Disclosure",
+                face_share_text: "All processing of TrueDepth face data occurs on-device and is not shared or disclosed to any third parties. The app does not use third-party SDKs that access face data.",
+                face_store_title: "Storage and Retention",
+                face_store_text: "The app does not store TrueDepth face data on servers or in the cloud; it is not persisted locally either. Any in-app usage statistics (e.g., smile counts or achievements) are non-biometric numeric data, unrelated to face data, and stored locally.",
+                face_rights_title: "User Rights and Controls",
+                face_rights_item1: "You can deny or revoke camera permission at any time; when disabled, the app will not access TrueDepth or camera data.",
+                face_rights_item2: "Deleting the app removes any locally stored, non-biometric usage data.",
+                compliance_title: "Compliance",
+                compliance_text: "The app complies with Apple’s TrueDepth/ARKit policies and the App Store Review Guidelines. The app does not use face data for undisclosed purposes, identification, surveillance, or advertising.",
                 section4_title: "4. Security",
                 section4_text: "We keep your data safe on your device and do not share it unless you choose to.",
                 section5_title: "5. Your Rights",
