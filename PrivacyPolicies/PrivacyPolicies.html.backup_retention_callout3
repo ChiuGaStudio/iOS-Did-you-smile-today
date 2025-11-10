@@ -81,7 +81,7 @@
     </header>
     <div class="container">
         <h1 data-i18n="privacy_title">隱私權政策</h1>
-        <p class="text-sm text-right mb-4">最近更新日期：2025/11/10</p>
+        <p class="text-sm text-right mb-4">最近更新日期：2025/11/07</p>
         <p data-i18n="privacy_intro">我們十分重視您的隱私。本政策說明在您使用 <strong>DAILY的笑</strong> 時，我們如何收集、使用與保護您的個人資訊。</p>
 
         <h2 data-i18n="section1_title">1. 收集的資訊</h2>
@@ -246,7 +246,6 @@
                 face_share_text: "All processing of TrueDepth face data occurs on-device and is not shared or disclosed to any third parties. The app does not use third-party SDKs that access face data.",
                 face_store_title: "Storage and Retention",
                 face_store_text: "The app does not store TrueDepth face data on servers or in the cloud; it is not persisted locally either. Any in-app usage statistics (e.g., smile counts or achievements) are non-biometric numeric data, unrelated to face data, and stored locally.",
-                                retention_callout: "Retention: Photos and non-biometric derived metrics remain on your device until you delete them.",
                 face_rights_title: "User Rights and Controls",
                 face_rights_item1: "You can deny or revoke camera permission at any time; when disabled, the app will not access TrueDepth or camera data.",
                 face_rights_item2: "Deleting the app removes any locally stored, non-biometric usage data.",

@@ -41,9 +41,7 @@
             .container { margin: 20px auto 0; width: 90%; }
             footer { flex-direction: column; text-align: center; }
         }
-    .callout-retention { background: #fffbe6; border: 1px solid #f5d28f; color: #5c4a00; padding: 10px 12px; border-radius: 6px; margin-top: 8px; font-weight: 600; }
-
-</style>
+    </style>
 </head>
 <body>
     <header id="home">
@@ -81,7 +79,7 @@
     </header>
     <div class="container">
         <h1 data-i18n="privacy_title">隱私權政策</h1>
-        <p class="text-sm text-right mb-4">最近更新日期：2025/11/10</p>
+        <p class="text-sm text-right mb-4">最近更新日期：2025/11/07</p>
         <p data-i18n="privacy_intro">我們十分重視您的隱私。本政策說明在您使用 <strong>DAILY的笑</strong> 時，我們如何收集、使用與保護您的個人資訊。</p>
 
         <h2 data-i18n="section1_title">1. 收集的資訊</h2>
@@ -105,7 +103,7 @@
         </ul>
 
         <h2 id="truedepth" data-i18n="truedepth_title">TrueDepth 與臉部資料</h2>
-        <p data-i18n="truedepth_text">本 App 使用 Apple 的 TrueDepth API 以即時讀取臉部表情係數與臉部姿態，僅為判斷使用者是否微笑之目的。App 不會收集、儲存、或傳輸任何 TrueDepth 生成的深度資料或可識別的臉部幾何資料；亦不建立任何可識別之臉部模板或特徵檔。TrueDepth 產生的表情係數僅於裝置端即時處理，處理完成後即刻丟棄。您主動拍攝的照片屬於一般影像資料，僅儲存在本機，不會上傳。</p>
+        <p data-i18n="truedepth_text">本 App 使用 Apple 的 TrueDepth API 以即時讀取臉部表情係數與臉部姿態，僅為判斷使用者是否微笑之目的。App 不會收集、儲存、或傳輸任何 TrueDepth 生成的深度資料或可識別的臉部幾何資料；TrueDepth 產生的表情係數僅於裝置端即時處理，處理完成後即刻丟棄。您主動拍攝的照片屬於一般影像資料，僅儲存在本機，不會上傳。</p>
 
         <h2 id="face-purpose" data-i18n="face_purpose_title">資料的使用目的</h2>
         <p data-i18n="face_purpose_text">我們僅將 TrueDepth 所得之即時表情係數用於啟用與改善 App 內的微笑偵測功能與介面互動，不用於身分識別、不建立個人檔案、不用於行銷或廣告，也不作跨服務追蹤。</p>
@@ -114,8 +112,7 @@
         <p data-i18n="face_share_text">與 TrueDepth 臉部資料相關的處理完全在裝置端進行，不會分享或揭露給任何第三方。App 不使用會存取臉部資料的第三方 SDK。</p>
 
         <h2 id="face-storage" data-i18n="face_store_title">資料的儲存與保留</h2>
-        <p data-i18n="face_store_text">本 App 不會將 TrueDepth 臉部資料儲存於伺服器或雲端；亦不在本機長期保存。若 App 內顯示使用統計（如微笑次數或成就），該等資料為非生物特徵的數值資料，與臉部資料無關，並僅以本機方式儲存。使用者拍攝的影像與非生物特徵的衍生指標僅儲存在裝置中，並保留至使用者刪除為止。</p>
-        <div class="callout-retention" data-i18n="retention_callout">保留期間：使用者拍攝的影像與非生物特徵的衍生指標僅儲存在裝置中，並保留至使用者刪除為止。</div>
+        <p data-i18n="face_store_text">本 App 不會將 TrueDepth 臉部資料儲存於伺服器或雲端；亦不在本機長期保存。若 App 內顯示使用統計（如微笑次數或成就），該等資料為非生物特徵的數值資料，與臉部資料無關，並僅以本機方式儲存。</p>
 
         <h2 id="face-rights" data-i18n="face_rights_title">使用者權利與控制</h2>
         <ul>
@@ -191,14 +188,13 @@
                 section3_item3: "<strong>相片存取：</strong> 用於儲存與讀取由照片串接成的短影片與相關照片檔。",
                 section3_item2: "<strong>通知權限（可選）：</strong> 若開啟每日提醒，將請求通知權限。",
                 truedepth_title: "TrueDepth 與臉部資料",
-                                truedepth_text: "本 App 使用 Apple 的 TrueDepth API 以即時讀取臉部表情係數與臉部姿態，僅為判斷使用者是否微笑之目的。App 不會收集、儲存、或傳輸任何 TrueDepth 生成的深度資料或可識別的臉部幾何資料；亦不建立任何可識別之臉部模板或特徵檔。TrueDepth 產生的表情係數僅於裝置端即時處理，處理完成後即刻丟棄。您主動拍攝的照片屬於一般影像資料，僅儲存在本機，不會上傳。",
+                亦不建立任何可識別之臉部模板或特徵檔。僅於裝置端即時處理，處理完成後即刻丟棄。您主動拍攝的照片屬於一般影像資料，僅儲存在本機，不會上傳。",
                 face_purpose_title: "資料的使用目的",
                 face_purpose_text: "我們僅將 TrueDepth 所得之即時表情係數用於啟用與改善 App 內的微笑偵測功能與介面互動，不用於身分識別、不建立個人檔案、不用於行銷或廣告，也不作跨服務追蹤。",
                 face_share_title: "資料的分享與揭露",
                 face_share_text: "與 TrueDepth 臉部資料相關的處理完全在裝置端進行，不會分享或揭露給任何第三方。App 不使用會存取臉部資料的第三方 SDK。",
                 face_store_title: "資料的儲存與保留",
-                                face_store_text: "本 App 不會將 TrueDepth 臉部資料儲存於伺服器或雲端；亦不在本機長期保存。若 App 內顯示使用統計（如微笑次數或成就），該等資料為非生物特徵的數值資料，與臉部資料無關，並僅以本機方式儲存。使用者拍攝的影像與非生物特徵的衍生指標僅儲存在裝置中，並保留至使用者刪除為止。",
-                                retention_callout: "保留期間：使用者拍攝的影像與非生物特徵的衍生指標僅儲存在裝置中，並保留至使用者刪除為止。",
+                使用者拍攝的影像與非生物特徵的衍生指標僅儲存在裝置中，並保留至使用者刪除為止。,
                 face_rights_title: "使用者權利與控制",
                 face_rights_item1: "您可隨時在系統層級拒絕或撤回相機權限；在相機權限關閉時，App 不會存取 TrueDepth 或相機資料。",
                 face_rights_item2: "若您刪除本 App，所有儲存在本機的非生物特徵資料（如使用統計）將一併移除。",
@@ -246,7 +242,6 @@
                 face_share_text: "All processing of TrueDepth face data occurs on-device and is not shared or disclosed to any third parties. The app does not use third-party SDKs that access face data.",
                 face_store_title: "Storage and Retention",
                 face_store_text: "The app does not store TrueDepth face data on servers or in the cloud; it is not persisted locally either. Any in-app usage statistics (e.g., smile counts or achievements) are non-biometric numeric data, unrelated to face data, and stored locally.",
-                                retention_callout: "Retention: Photos and non-biometric derived metrics remain on your device until you delete them.",
                 face_rights_title: "User Rights and Controls",
                 face_rights_item1: "You can deny or revoke camera permission at any time; when disabled, the app will not access TrueDepth or camera data.",
                 face_rights_item2: "Deleting the app removes any locally stored, non-biometric usage data.",
